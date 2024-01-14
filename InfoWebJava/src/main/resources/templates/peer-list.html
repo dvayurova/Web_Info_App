@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Peers</title>
+    <link rel="stylesheet" type="text/css" media="all" href="../static/css/styles.css" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div th:replace="header.html"></div>
+<main>
+    <h1> Peers </h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Nickname</th>
+            <th>Birthday</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="peer : ${peers}">
+            <td th:text="${peer.nickname}">Nickname</td>
+            <td th:text="${peer.birthday}">Birthday</td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+<div th:replace="footer.html"></div>
+</body>
+</html>
