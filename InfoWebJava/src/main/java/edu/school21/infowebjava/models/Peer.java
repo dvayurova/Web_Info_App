@@ -11,7 +11,7 @@ import java.sql.Date;
 @Data
 @Entity
 @Table(name="peers")
-public class Peer {
+public class Peer implements EntityInterface{
     @Id
     private String nickname;
 
