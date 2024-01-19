@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="xp")
-public class XP implements EntityInterface{
+public class XP {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

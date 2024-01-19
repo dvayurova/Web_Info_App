@@ -8,7 +8,7 @@ import java.sql.Time;
 @Data
 @Entity
 @Table(name = "p2p")
-public class P2P implements EntityInterface{
+public class P2P {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

@@ -8,7 +8,7 @@ import java.sql.Time;
 @Data
 @Entity
 @Table(name="verter")
-public class Verter implements EntityInterface{
+public class Verter {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

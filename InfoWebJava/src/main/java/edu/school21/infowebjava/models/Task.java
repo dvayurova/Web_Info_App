@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="tasks")
-public class Task implements EntityInterface{
+public class Task {
     @Id
     private String title;
     private String parentTask;

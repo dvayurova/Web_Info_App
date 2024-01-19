@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="recommendations")
-public class Recommendation implements EntityInterface{
+public class Recommendation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

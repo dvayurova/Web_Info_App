@@ -1,6 +1,7 @@
 package edu.school21.infowebjava.controller;
 
-import edu.school21.infowebjava.models.Peer;
+import edu.school21.infowebjava.models.EntityInterface;
+
 import edu.school21.infowebjava.service.PeerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,10 +21,11 @@ public class PeerController {
     }
 
     @GetMapping("/peer-list")
-    public String showPeers(Model model){
-        List<Peer> peers = peerService.getAllPeers();
-        model.addAttribute("peers", peers);
-        return "peer-list";
+    public String show(Model model){
+        model.addAttribute("entities", (List<EntityInterface>) peerService.getAll());
+        model.addAttribute("columnNames", peerService.columnNames());
+        model.addAttribute("tableName", peerService.tableName());
+        return "entity-list";
     }
 
 }

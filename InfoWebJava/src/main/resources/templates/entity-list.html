@@ -8,18 +8,16 @@
 <body>
 <div th:replace="header.html"></div>
 <main>
-    <h1> Peers </h1>
+    <h1 th:text="${tableName}">  </h1>
     <table>
         <thead>
         <tr>
-            <th>Nickname</th>
-            <th>Birthday</th>
+            <th th:each="columnName : ${columnNames}" th:text="${columnName}"></th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="peer : ${peers}">
-            <td th:text="${peer.nickname}">Nickname</td>
-            <td th:text="${peer.birthday}">Birthday</td>
+        <tr th:each="entity : ${entities}">
+            <td th:each="columnName : ${columnNames}" th:text="${entity[columnName]}"></td>
         </tr>
         </tbody>
     </table>

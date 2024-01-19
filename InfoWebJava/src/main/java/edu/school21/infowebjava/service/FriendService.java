@@ -5,10 +5,11 @@ import edu.school21.infowebjava.repository.FriendRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class FriendService {
+public class FriendService implements EntityService  {
     private final FriendRepository friendRepository;
 
     @Autowired
@@ -16,7 +17,7 @@ public class FriendService {
         this.friendRepository = friendRepository;
     }
 
-    public List<Friend> getAllFriends(){
+    public List<Friend> getAll(){
         return friendRepository.findAll();
     }
 
@@ -30,5 +31,13 @@ public class FriendService {
 
     public void deleteFriend(Long id){
         friendRepository.deleteById(id);
+    }
+
+    public List<String> columnNames(){
+        return Arrays.asList("id", "peer1", "peer2");
+    }
+
+    public String tableName(){
+        return "Friend";
     }
 }

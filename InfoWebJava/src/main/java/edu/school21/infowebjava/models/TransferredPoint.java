@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="transferredPoints")
-public class TransferredPoint implements EntityInterface{
+public class TransferredPoint{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

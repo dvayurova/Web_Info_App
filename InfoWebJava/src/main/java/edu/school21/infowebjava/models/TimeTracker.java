@@ -9,7 +9,7 @@ import java.sql.Time;
 @Data
 @Entity
 @Table(name="timetracking")
-public class TimeTracker implements EntityInterface{
+public class TimeTracker {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

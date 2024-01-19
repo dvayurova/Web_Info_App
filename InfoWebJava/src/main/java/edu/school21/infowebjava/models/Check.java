@@ -8,7 +8,7 @@ import java.sql.Date;
 @Data
 @Entity
 @Table(name="checks")
-public class Check implements EntityInterface{
+public class Check implements EntityInterface {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
