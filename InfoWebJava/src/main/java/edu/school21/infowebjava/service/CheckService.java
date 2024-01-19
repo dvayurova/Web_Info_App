@@ -18,6 +18,7 @@ public class CheckService implements EntityService{
         this.checkRepository = checkRepository;
     }
 
+    @Override
     public List<? extends EntityInterface> getAll(){
         return checkRepository.findAll();
     }
@@ -33,9 +34,11 @@ public class CheckService implements EntityService{
     public void deleteCheck(Long id){
         checkRepository.deleteById(id);
     }
+    @Override
     public List<String> columnNames(){
         return Arrays.asList("id", "peer", "task", "date");
     }
+    @Override
     public String tableName(){
         return "Check";
     }

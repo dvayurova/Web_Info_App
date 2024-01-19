@@ -7,10 +7,12 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="xp")
-public class XP {
+public class XP implements EntityInterface {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Integer check;
+    @Column(name = "check_")
+    private Integer check_;
+    @Column(name = "xpamount")
     private Integer xpAmount;
 }

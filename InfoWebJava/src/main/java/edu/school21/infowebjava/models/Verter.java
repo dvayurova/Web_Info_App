@@ -8,11 +8,12 @@ import java.sql.Time;
 @Data
 @Entity
 @Table(name="verter")
-public class Verter {
+public class Verter implements EntityInterface {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Integer check;
+    @Column(name = "check_")
+    private Integer check_;
     @Enumerated(EnumType.STRING)
     private CheckStatus state;
     private Time time;

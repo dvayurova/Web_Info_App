@@ -1,4 +1,4 @@
-package edu.school21.infowebjava.controller;
+package edu.school21.infowebjava.controller.data;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

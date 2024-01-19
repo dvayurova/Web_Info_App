@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="friends")
-public class Friend {
+public class Friend implements EntityInterface {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

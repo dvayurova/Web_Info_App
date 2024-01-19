@@ -7,11 +7,12 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="recommendations")
-public class Recommendation {
+public class Recommendation implements EntityInterface {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String peer;
+    @Column(name = "recommendedpeer")
     private String recommendedPeer;
 
 }

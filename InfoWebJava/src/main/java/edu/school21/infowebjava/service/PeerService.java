@@ -19,6 +19,7 @@ public class PeerService implements EntityService {
         this.peerRepository = peerRepository;
     }
 
+    @Override
     public List<? extends EntityInterface> getAll(){
         return peerRepository.findAll();
     }
@@ -35,10 +36,12 @@ public class PeerService implements EntityService {
         peerRepository.deleteById(nickname);
     }
 
+    @Override
     public List<String> columnNames(){
         return Arrays.asList("nickname", "birthday");
     }
 
+    @Override
     public String tableName(){
         return "Peer";
     }

@@ -8,15 +8,19 @@ import java.sql.Time;
 @Data
 @Entity
 @Table(name = "p2p")
-public class P2P {
+public class P2P implements EntityInterface {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Integer check;
+
+    @Column(name = "check_")
+    private Integer check_;
+    @Column(name = "checkingpeer")
     private String checkingPeer;
+
     @Enumerated(EnumType.STRING)
     private CheckStatus state;
-    private Time time;
 
+    private Time time;
 
 }
