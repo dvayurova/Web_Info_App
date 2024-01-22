@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class PeerService implements EntityService {
+public class PeerService implements EntityService<Peer, String> {
 
     private final PeerRepository peerRepository;
 
@@ -24,15 +24,18 @@ public class PeerService implements EntityService {
         return peerRepository.findAll();
     }
 
-    public Peer addPeer(Peer peer){
+    @Override
+    public Peer add(Peer peer){
         return peerRepository.save(peer);
     }
 
-    public Peer updatePeer(Peer peer){
+    @Override
+    public Peer update(Peer peer){
         return peerRepository.save(peer);
     }
 
-    public void deletePeer(String nickname){
+    @Override
+    public void delete(String nickname){
         peerRepository.deleteById(nickname);
     }
 

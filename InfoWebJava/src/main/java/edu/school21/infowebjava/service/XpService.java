@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class XpService implements EntityService{
+public class XpService implements EntityService<XP, Long>{
     private final XpRepository xpRepository;
 
     @Autowired
@@ -23,15 +23,18 @@ public class XpService implements EntityService{
         return xpRepository.findAll();
     }
 
-    public XP addXp(XP xp){
+    @Override
+    public XP add(XP xp){
         return xpRepository.save(xp);
     }
 
-    public XP updateXp(XP xp){
+    @Override
+    public XP update(XP xp){
         return xpRepository.save(xp);
     }
 
-    public void deleteXp(Long id){
+    @Override
+    public void delete(Long id){
         xpRepository.deleteById(id);
     }
     @Override

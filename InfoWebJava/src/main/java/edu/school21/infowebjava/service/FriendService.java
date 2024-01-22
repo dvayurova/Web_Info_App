@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class FriendService implements EntityService  {
+public class FriendService implements EntityService<Friend, Long>  {
     private final FriendRepository friendRepository;
 
     @Autowired
@@ -23,15 +23,18 @@ public class FriendService implements EntityService  {
         return friendRepository.findAll();
     }
 
-    public Friend addFriend(Friend friend){
+    @Override
+    public Friend add(Friend friend){
         return friendRepository.save(friend);
     }
 
-    public Friend updateFriend(Friend friend){
+    @Override
+    public Friend update(Friend friend){
         return friendRepository.save(friend);
     }
 
-    public void deleteFriend(Long id){
+    @Override
+    public void delete(Long id){
         friendRepository.deleteById(id);
     }
 

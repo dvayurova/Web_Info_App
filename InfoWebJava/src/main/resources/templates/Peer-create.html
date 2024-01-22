@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add</title>
+    <link rel="stylesheet" type="text/css" media="all" href="../static/css/styles.css" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div th:replace="header.html"></div>
+<main>
+<form action="#" th:action="@{Peer-create}" th:object="${peer}" method="post">
+    <label for="nickname">nickname</label>
+    <input type="text" th:field="*{nickname}" id="nickname" placeholder="nickname">
+    <label for="birthday">birthday</label>
+    <input type="date" th:field="*{birthday}" id="birthday" placeholder="birthday">
+    <input type="submit" value="Add peer">
+</form>
+</main>
+<div th:replace="footer.html"></div>
+</body>
+</html>

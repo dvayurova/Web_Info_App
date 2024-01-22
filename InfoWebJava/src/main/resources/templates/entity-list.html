@@ -18,9 +18,11 @@
         <tbody>
         <tr th:each="entity : ${entities}">
             <td th:each="columnName : ${columnNames}" th:text="${entity[columnName]}"></td>
+            <td><a th:href="@{'/' + ${tableName} + '-delete/' + ${entity[columnNames[0]]}}">Delete</a></td>
         </tr>
         </tbody>
     </table>
+    <p><a th:href="@{'/' + ${tableName} + '-create'}">Добавить</a></p>
 </main>
 <div th:replace="footer.html"></div>
 </body>

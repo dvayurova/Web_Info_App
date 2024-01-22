@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class P2pService implements EntityService{
+public class P2pService implements EntityService<P2P, Long>{
     private final P2pRepository p2pRepository;
 
     public P2pService(P2pRepository p2pRepository) {
@@ -19,10 +19,12 @@ public class P2pService implements EntityService{
     public List<? extends EntityInterface> getAll(){
         return p2pRepository.findAll();
     }
-
-    public P2P addP2p(P2P p2p) {return p2pRepository.save(p2p);}
-    public P2P updateP2p(P2P p2p) {return p2pRepository.save(p2p);}
-    public void deleteP2p(Long id) {
+    @Override
+    public P2P add(P2P p2p) {return p2pRepository.save(p2p);}
+    @Override
+    public P2P update(P2P p2p) {return p2pRepository.save(p2p);}
+    @Override
+    public void delete(Long id) {
         p2pRepository.deleteById(id);
     }
     @Override

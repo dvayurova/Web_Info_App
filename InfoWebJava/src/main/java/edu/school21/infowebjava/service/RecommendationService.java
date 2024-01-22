@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class RecommendationService implements EntityService{
+public class RecommendationService implements EntityService<Recommendation, Long>{
     private final RecommendationRepository recommendationRepository;
 
     @Autowired
@@ -23,15 +23,18 @@ public class RecommendationService implements EntityService{
         return recommendationRepository.findAll();
     }
 
-    public Recommendation addRecommendation(Recommendation recommendation){
+    @Override
+    public Recommendation add(Recommendation recommendation){
         return recommendationRepository.save(recommendation);
     }
 
-    public Recommendation updateRecommendation(Recommendation recommendation){
+    @Override
+    public Recommendation update(Recommendation recommendation){
         return recommendationRepository.save(recommendation);
     }
 
-    public void deleteRecommendation(Long id){
+    @Override
+    public void delete(Long id){
         recommendationRepository.deleteById(id);
     }
     @Override

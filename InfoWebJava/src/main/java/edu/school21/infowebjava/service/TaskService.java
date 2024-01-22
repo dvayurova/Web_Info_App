@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class TaskService implements EntityService{
+public class TaskService implements EntityService<Task, String>{
     private final TaskRepository taskRepository;
 
     @Autowired
@@ -23,15 +23,18 @@ public class TaskService implements EntityService{
         return taskRepository.findAll();
     }
 
-    public Task addTask(Task task){
+    @Override
+    public Task add(Task task){
         return taskRepository.save(task);
     }
 
-    public Task updateTask(Task task){
+    @Override
+    public Task update(Task task){
         return taskRepository.save(task);
     }
 
-    public void deleteTask(String task){
+    @Override
+    public void delete(String task){
         taskRepository.deleteById(task);
     }
     @Override

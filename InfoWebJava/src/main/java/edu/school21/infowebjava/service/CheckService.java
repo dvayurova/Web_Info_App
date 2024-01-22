@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class CheckService implements EntityService{
+public class CheckService implements EntityService<Check, Long>{
     private final CheckRepository checkRepository;
 
     @Autowired
@@ -23,15 +23,18 @@ public class CheckService implements EntityService{
         return checkRepository.findAll();
     }
 
-    public Check addCheck(Check check){
+    @Override
+    public Check add(Check check){
         return checkRepository.save(check);
     }
 
-    public Check updateCheck(Check check){
+    @Override
+    public Check update(Check check){
         return checkRepository.save(check);
     }
 
-    public void deleteCheck(Long id){
+    @Override
+    public void delete(Long id){
         checkRepository.deleteById(id);
     }
     @Override

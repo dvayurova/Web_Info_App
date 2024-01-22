@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class TimeTrackerService implements EntityService{
+public class TimeTrackerService implements EntityService<TimeTracker, Long>{
     private final TimeTrackerRepository timeTrackerRepository;
 
     @Autowired
@@ -23,15 +23,18 @@ public class TimeTrackerService implements EntityService{
         return timeTrackerRepository.findAll();
     }
 
-    public TimeTracker addTimeTracker(TimeTracker timeTracker){
+    @Override
+    public TimeTracker add(TimeTracker timeTracker){
         return timeTrackerRepository.save(timeTracker);
     }
 
-    public TimeTracker updateTimeTracker(TimeTracker timeTracker){
+    @Override
+    public TimeTracker update(TimeTracker timeTracker){
         return timeTrackerRepository.save(timeTracker);
     }
 
-    public void deleteTimeTracker(Long id){
+    @Override
+    public void delete(Long id){
         timeTrackerRepository.deleteById(id);
     }
     @Override

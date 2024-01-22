@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class TransferredPointService implements EntityService{
+public class TransferredPointService implements EntityService<TransferredPoint, Long>{
     private final TransferredPointRepository transferredPointRepository;
 
     @Autowired
@@ -23,15 +23,18 @@ public class TransferredPointService implements EntityService{
         return transferredPointRepository.findAll();
     }
 
-    public TransferredPoint addTransferredPoint(TransferredPoint transferredPoint){
+    @Override
+    public TransferredPoint add(TransferredPoint transferredPoint){
         return transferredPointRepository.save(transferredPoint);
     }
 
-    public TransferredPoint updateTransferredPoint(TransferredPoint transferredPoint){
+    @Override
+    public TransferredPoint update(TransferredPoint transferredPoint){
         return transferredPointRepository.save(transferredPoint);
     }
 
-    public void deleteTransferredPoint(Long id){
+    @Override
+    public void delete(Long id){
         transferredPointRepository.deleteById(id);
     }
     @Override

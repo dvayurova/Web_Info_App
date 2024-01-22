@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class VerterService implements EntityService{
+public class VerterService implements EntityService<Verter, Long>{
     private final VerterRepository verterRepository;
 
     @Autowired
@@ -23,15 +23,18 @@ public class VerterService implements EntityService{
         return verterRepository.findAll();
     }
 
-    public Verter addVerter(Verter verter){
+    @Override
+    public Verter add(Verter verter){
         return verterRepository.save(verter);
     }
 
-    public Verter updateVerter(Verter verter){
+    @Override
+    public Verter update(Verter verter){
         return verterRepository.save(verter);
     }
 
-    public void deleteVerter(Long id){
+    @Override
+    public void delete(Long id){
         verterRepository.deleteById(id);
     }
     @Override
