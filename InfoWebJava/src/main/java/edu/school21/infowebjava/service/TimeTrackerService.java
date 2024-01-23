@@ -1,6 +1,7 @@
 package edu.school21.infowebjava.service;
 
 import edu.school21.infowebjava.models.EntityInterface;
+import edu.school21.infowebjava.models.Peer;
 import edu.school21.infowebjava.models.TimeTracker;
 import edu.school21.infowebjava.repository.TimeTrackerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,10 @@ public class TimeTrackerService implements EntityService<TimeTracker, Long>{
     public List<? extends EntityInterface> getAll(){
         return timeTrackerRepository.findAll();
     }
-
+    @Override
+    public TimeTracker findById(Long id){
+        return timeTrackerRepository.findById(id).get();
+    }
     @Override
     public TimeTracker add(TimeTracker timeTracker){
         return timeTrackerRepository.save(timeTracker);

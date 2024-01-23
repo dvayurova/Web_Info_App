@@ -1,6 +1,7 @@
 package edu.school21.infowebjava.service;
 
 import edu.school21.infowebjava.models.EntityInterface;
+import edu.school21.infowebjava.models.Peer;
 import edu.school21.infowebjava.models.Task;
 import edu.school21.infowebjava.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,11 @@ public class TaskService implements EntityService<Task, String>{
     @Override
     public List<? extends EntityInterface> getAll(){
         return taskRepository.findAll();
+    }
+
+    @Override
+    public Task findById(String task){
+        return taskRepository.findById(task).get();
     }
 
     @Override

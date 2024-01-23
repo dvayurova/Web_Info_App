@@ -2,6 +2,7 @@ package edu.school21.infowebjava.service;
 
 import edu.school21.infowebjava.models.EntityInterface;
 import edu.school21.infowebjava.models.Friend;
+import edu.school21.infowebjava.models.Peer;
 import edu.school21.infowebjava.repository.FriendRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,12 @@ public class FriendService implements EntityService<Friend, Long>  {
     public List<? extends EntityInterface> getAll(){
         return friendRepository.findAll();
     }
+
+    @Override
+    public Friend findById(Long id){
+        return friendRepository.findById(id).get();
+    }
+
 
     @Override
     public Friend add(Friend friend){

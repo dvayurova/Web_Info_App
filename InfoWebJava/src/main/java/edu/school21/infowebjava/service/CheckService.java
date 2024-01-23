@@ -2,6 +2,7 @@ package edu.school21.infowebjava.service;
 
 import edu.school21.infowebjava.models.Check;
 import edu.school21.infowebjava.models.EntityInterface;
+import edu.school21.infowebjava.models.Peer;
 import edu.school21.infowebjava.repository.CheckRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,10 @@ public class CheckService implements EntityService<Check, Long>{
     @Override
     public List<? extends EntityInterface> getAll(){
         return checkRepository.findAll();
+    }
+    @Override
+    public Check findById(Long id){
+        return checkRepository.findById(id).get();
     }
 
     @Override

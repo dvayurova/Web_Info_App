@@ -27,8 +27,9 @@
             <td th:each="columnName : ${columnNames}" th:text="${entity[columnName]}"></td>
             <td>
                 <a th:href="@{'/' + ${tableName} + '-delete/' + ${entity[columnNames[0]]}}"
-                   onclick="return confirmDelete()">Delete</a>
+                   onclick="return confirmDelete()">Удалить</a>
             </td>
+            <td><a th:href="@{'/' + ${tableName} + '-update/' + ${entity[columnNames[0]]}}">Редактировать</a></td>
         </tr>
         </tbody>
     </table>

@@ -1,6 +1,7 @@
 package edu.school21.infowebjava.service;
 
 import edu.school21.infowebjava.models.EntityInterface;
+import edu.school21.infowebjava.models.Peer;
 import edu.school21.infowebjava.models.TransferredPoint;
 import edu.school21.infowebjava.repository.TransferredPointRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,10 @@ public class TransferredPointService implements EntityService<TransferredPoint, 
     public List<? extends EntityInterface> getAll(){
         return transferredPointRepository.findAll();
     }
-
+    @Override
+    public TransferredPoint findById(Long id){
+        return transferredPointRepository.findById(id).get();
+    }
     @Override
     public TransferredPoint add(TransferredPoint transferredPoint){
         return transferredPointRepository.save(transferredPoint);

@@ -1,6 +1,7 @@
 package edu.school21.infowebjava.service;
 
 import edu.school21.infowebjava.models.EntityInterface;
+import edu.school21.infowebjava.models.Peer;
 import edu.school21.infowebjava.models.Recommendation;
 import edu.school21.infowebjava.repository.RecommendationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,11 @@ public class RecommendationService implements EntityService<Recommendation, Long
     @Override
     public List<? extends EntityInterface> getAll(){
         return recommendationRepository.findAll();
+    }
+
+    @Override
+    public Recommendation findById(Long id){
+        return recommendationRepository.findById(id).get();
     }
 
     @Override

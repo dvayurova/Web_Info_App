@@ -2,6 +2,7 @@ package edu.school21.infowebjava.service;
 
 import edu.school21.infowebjava.models.EntityInterface;
 import edu.school21.infowebjava.models.P2P;
+import edu.school21.infowebjava.models.Peer;
 import edu.school21.infowebjava.repository.P2pRepository;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,11 @@ public class P2pService implements EntityService<P2P, Long>{
 
     public List<? extends EntityInterface> getAll(){
         return p2pRepository.findAll();
+    }
+
+    @Override
+    public P2P findById(Long id){
+        return p2pRepository.findById(id).get();
     }
     @Override
     public P2P add(P2P p2p) {return p2pRepository.save(p2p);}
@@ -36,5 +42,4 @@ public class P2pService implements EntityService<P2P, Long>{
         return "P2P";
     }
 
-    public P2P findById(Long id) {return p2pRepository.findById(id).get();}
 }

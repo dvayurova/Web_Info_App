@@ -23,6 +23,10 @@ public class PeerService implements EntityService<Peer, String> {
     public List<? extends EntityInterface> getAll(){
         return peerRepository.findAll();
     }
+    @Override
+    public Peer findById(String nickname){
+        return peerRepository.findById(nickname).get();
+    }
 
     @Override
     public Peer add(Peer peer){
@@ -31,7 +35,7 @@ public class PeerService implements EntityService<Peer, String> {
 
     @Override
     public Peer update(Peer peer){
-        return peerRepository.save(peer);
+        return peerRepository.save(peer) ;
     }
 
     @Override

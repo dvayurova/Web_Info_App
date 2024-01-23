@@ -1,6 +1,7 @@
 package edu.school21.infowebjava.service;
 
 import edu.school21.infowebjava.models.EntityInterface;
+import edu.school21.infowebjava.models.Peer;
 import edu.school21.infowebjava.models.XP;
 import edu.school21.infowebjava.repository.XpRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,10 @@ public class XpService implements EntityService<XP, Long>{
     public List<? extends EntityInterface> getAll(){
         return xpRepository.findAll();
     }
-
+    @Override
+    public XP findById(Long id){
+        return xpRepository.findById(id).get();
+    }
     @Override
     public XP add(XP xp){
         return xpRepository.save(xp);
