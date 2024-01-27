@@ -43,7 +43,7 @@ public class VerterService implements EntityService<Verter, Long>{
     }
     @Override
     public List<String> columnNames(){
-        return Arrays.asList("id", "check_", "state", "time");
+        return Arrays.asList("id", "check_id", "state", "time");
     }
     @Override
     public String tableName(){

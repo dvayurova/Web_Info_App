@@ -35,7 +35,7 @@ public class P2pService implements EntityService<P2P, Long>{
     }
     @Override
     public List<String> columnNames(){
-        return Arrays.asList("id", "check_", "checkingPeer", "state", "time");
+        return Arrays.asList("id", "check_id", "checkingPeer", "state", "time");
     }
     @Override
     public String tableName(){

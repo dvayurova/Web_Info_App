@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update</title>
+    <link rel="stylesheet" type="text/css" media="all" href="../../static/css/styles.css" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div th:replace="header.html"></div>
+<main>
+    <form action="#" th:action="@{'update' + ${friend.id}}" th:object="${friend}" method="post">
+    <label for="id">id</label>
+        <input readonly type="text" th:field="*{id}" id="id" placeholder="id">
+        <label for="peer1">peer1</label>
+        <input type="text" th:field="*{peer1}" id="peer1" placeholder="peer1">
+        <label for="peer2">peer2</label>
+        <input type="text" th:field="*{peer2}" id="peer2" placeholder="peer2">
+        <input type="submit" value="Save">
+    </form>
+</main>
+<div th:replace="footer.html"></div>
+</body>
+</html>

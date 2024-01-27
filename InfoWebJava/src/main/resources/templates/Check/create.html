@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add</title>
+    <link rel="stylesheet" type="text/css" media="all" href="../../static/css/styles.css" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div th:replace="header.html"></div>
+<main>
+<form action="#" th:action="@{create}" th:object="${check}" method="post">
+    <label for="peer">peer</label>
+    <input type="text" th:field="*{peer}" id="peer" placeholder="peer">
+    <label for="task">task</label>
+    <input type="text" th:field="*{task}" id="task" placeholder="task">
+    <label for="date">date</label>
+    <input type="date" th:field="*{date}" id="date" placeholder="date">
+    <input type="submit" value="Add check">
+</form>
+</main>
+<div th:replace="footer.html"></div>
+</body>
+</html>

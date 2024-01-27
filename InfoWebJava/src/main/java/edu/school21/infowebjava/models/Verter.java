@@ -12,8 +12,8 @@ public class Verter implements EntityInterface {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "check_")
-    private Integer check_;
+    @Column(name = "check_id")
+    private Integer check_id;
     @Enumerated(EnumType.STRING)
     private CheckStatus state;
     private Time time;

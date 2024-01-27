@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add</title>
+    <link rel="stylesheet" type="text/css" media="all" href="../../static/css/styles.css" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div th:replace="header.html"></div>
+<main>
+    <form action="#" th:action="@{create}" th:object="${p2p}" method="post">
+        <label for="check_id">check_id</label>
+        <input type="text" th:field="*{check_id}" id="check_id" placeholder="check_id">
+
+        <label for="checkingPeer">checkingPeer</label>
+        <input type="text" th:field="*{checkingPeer}" id="checkingPeer" placeholder="checkingPeer">
+
+        <label for="state">state</label>
+        <select th:field="*{state}" id="state">
+            <option th:each="status : ${T(edu.school21.infowebjava.models.CheckStatus).values()}" th:value="${status}" th:text="${status}"></option>
+        </select>
+
+        <label for="time">time</label>
+        <input type="text" th:field="*{time}" id="time" placeholder="HH:mm:ss">
+
+        <input type="submit" value="Add p2p">
+    </form>
+</main>
+<div th:replace="footer.html"></div>
+</body>
+</html>

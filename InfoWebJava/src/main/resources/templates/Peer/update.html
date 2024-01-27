@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Update</title>
-    <link rel="stylesheet" type="text/css" media="all" href="../static/css/styles.css" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" type="text/css" media="all" href="../../static/css/styles.css" th:href="@{/css/styles.css}">
 </head>
 <body>
 <div th:replace="header.html"></div>
 <main>
-    <form action="#" th:action="@{'/Peer-update/' + ${peer.nickname}}" th:object="${peer}" method="post">
+    <form action="#" th:action="@{'update' + ${peer.nickname}}" th:object="${peer}" method="post">
     <label for="nickname">nickname</label>
         <input readonly type="text" th:field="*{nickname}" id="nickname" placeholder="nickname">
         <label for="birthday">birthday</label>

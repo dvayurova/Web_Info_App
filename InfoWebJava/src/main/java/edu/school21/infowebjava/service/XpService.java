@@ -43,7 +43,7 @@ public class XpService implements EntityService<XP, Long>{
     }
     @Override
     public List<String> columnNames(){
-        return Arrays.asList("id", "check_", "xpAmount");
+        return Arrays.asList("id", "check_id", "xpAmount");
     }
     @Override
     public String tableName(){

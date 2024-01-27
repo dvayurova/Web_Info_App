@@ -20,37 +20,37 @@ public class PeerController extends BaseTableController {
         this.entityService = peerService;
     }
 
-    @GetMapping("/peer-list")
+    @GetMapping("/Peer")
     public String showPeers(Model model) {
         return show(model);
     }
 
-    @GetMapping("/Peer-create")
+    @GetMapping("/Peer/create")
     public String createForm(Peer peer) {
-        return "Peer-create";
+        return "Peer/create";
     }
 
-    @PostMapping("Peer-create")
+    @PostMapping("Peer/create")
     public String create(Peer peer, Model model) {
         entityService.add(peer);
-        return "redirect:/peer-list";
+        return "redirect:/Peer";
     }
 
-    @GetMapping("/Peer-delete/{id}")
+    @GetMapping("/Peer/delete/{id}")
     public String delete(@PathVariable("id") String nickname) {
         entityService.delete(nickname);
-        return "redirect:/peer-list";
+        return "redirect:/Peer";
     }
 
-    @GetMapping("/Peer-update/{id}")
+    @GetMapping("/Peer/update/{id}")
     public String updateForm(@PathVariable("id") String nickname, Model model) {
         model.addAttribute("peer", entityService.findById(nickname));
-        return "Peer-update";
+        return "Peer/update";
     }
-    @PostMapping("/Peer-update/{id}")
+    @PostMapping("/Peer/update/{id}")
     public String update(@ModelAttribute("peer") Peer peer){
         entityService.update(peer);
-        return "redirect:/peer-list";
+        return "redirect:/Peer";
     }
 
 }

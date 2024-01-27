@@ -2,8 +2,9 @@ package edu.school21.infowebjava.models;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import java.sql.Time;
+import java.time.LocalTime;
 
 @Data
 @Entity
@@ -13,14 +14,16 @@ public class P2P implements EntityInterface {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "check_")
-    private Integer check_;
+    @Column(name = "check_id")
+    private Integer check_id;
     @Column(name = "checkingpeer")
     private String checkingPeer;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "state")
     private CheckStatus state;
 
-    private Time time;
+    @DateTimeFormat(pattern = "HH:mm:ss")
+    private LocalTime time;
 
 }
