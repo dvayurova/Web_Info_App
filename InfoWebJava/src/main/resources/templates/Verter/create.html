@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add</title>
+    <link rel="stylesheet" type="text/css" media="all" href="../../static/css/styles.css" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div th:replace="header.html"></div>
+<main>
+<form action="#" th:action="@{create}" th:object="${verter}" method="post">
+    <label for="check_id">check_id</label>
+    <input type="text" th:field="*{check_id}" id="check_id" placeholder="check_id">
+    <label for="state">state</label>
+    <input type="text" th:field="*{state}" id="state" placeholder="state">
+    <label for="time">time</label>
+    <input type="text" th:field="*{time}" id="time" placeholder="HH:mm:ss">
+    <input type="submit" value="Add">
+</form>
+</main>
+<div th:replace="footer.html"></div>
+</body>
+</html>

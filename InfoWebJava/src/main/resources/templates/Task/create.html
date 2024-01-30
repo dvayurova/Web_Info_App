@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add</title>
+    <link rel="stylesheet" type="text/css" media="all" href="../../static/css/styles.css" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div th:replace="header.html"></div>
+<main>
+    <form action="#" th:action="@{create}" th:object="${task}" method="post">
+        <label for="title">title</label>
+        <input type="text" th:field="*{title}" id="title" placeholder="title">
+        <label for="parentTask">parentTask</label>
+        <input type="text" th:field="*{parentTask}" id="parentTask" placeholder="parentTask">
+        <label for="maxXp">maxXp</label>
+        <input type="text" th:field="*{maxXp}" id="maxXp" placeholder="maxXp">
+        <input type="submit" value="Add task">
+    </form>
+</main>
+<div th:replace="footer.html"></div>
+</body>
+</html>

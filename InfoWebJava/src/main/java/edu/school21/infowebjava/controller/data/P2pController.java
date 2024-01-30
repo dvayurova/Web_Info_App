@@ -31,9 +31,6 @@ public class P2pController extends BaseTableController{
 
     @PostMapping("P2P/create")
     public String create(P2P p2p, Model model) {
-        System.out.println("===== P2P ======:" + p2p);
-        System.out.println("===== P2P state class ======:"+ p2p.getState().getClass());
-        p2p.setState(p2p.getState().toString());
         entityService.add(p2p);
         return "redirect:/P2P";
     }

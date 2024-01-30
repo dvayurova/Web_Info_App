@@ -8,17 +8,13 @@
 <body>
 <div th:replace="header.html"></div>
 <main>
-    <form action="#" th:action="@{'update' + ${p2p.id}}" th:object="${p2p}" method="post">
+    <form action="#" th:action="@{'update' + ${verter.id}}" th:object="${verter}" method="post">
     <label for="id">id</label>
         <input readonly type="text" th:field="*{id}" id="id" placeholder="id">
         <label for="check_id">check_id</label>
         <input type="text" th:field="*{check_id}" id="check_id" placeholder="check_id">
-        <label for="checkingPeer">checkingPeer</label>
-        <input type="text" th:field="*{checkingPeer}" id="checkingPeer" placeholder="checkingPeer">
         <label for="state">state</label>
-        <select th:field="*{state}" id="state">
-            <option th:each="status : ${T(edu.school21.infowebjava.models.CheckStatus).values()}" th:value="${status}" th:text="${status}"></option>
-        </select>
+        <input type="text" th:field="*{state}" id="state" placeholder="state">
         <label for="time">time</label>
         <input type="text" th:field="*{time}" id="time" placeholder="HH:mm:ss">
         <input type="submit" value="Save">

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add</title>
+    <link rel="stylesheet" type="text/css" media="all" href="../../static/css/styles.css" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div th:replace="header.html"></div>
+<main>
+<form action="#" th:action="@{create}" th:object="${recommendation}" method="post">
+    <label for="peer">peer</label>
+    <input type="text" th:field="*{peer}" id="peer" placeholder="peer">
+    <label for="recommendedPeer">recommendedPeer</label>
+    <input type="text" th:field="*{recommendedPeer}" id="recommendedPeer" placeholder="recommendedPeer">
+    <input type="submit" value="Add recommendation">
+</form>
+</main>
+<div th:replace="footer.html"></div>
+</body>
+</html>
