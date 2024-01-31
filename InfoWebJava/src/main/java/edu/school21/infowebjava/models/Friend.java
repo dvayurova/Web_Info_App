@@ -12,4 +12,5 @@ public class Friend implements EntityInterface {
     private Long id;
     private String peer1;
     private String peer2;
+
 }

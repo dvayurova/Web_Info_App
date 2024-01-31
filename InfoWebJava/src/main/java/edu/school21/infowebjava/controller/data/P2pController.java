@@ -24,7 +24,6 @@ public class P2pController extends BaseTableController{
 
     @GetMapping("/P2P/create")
     public String createForm(Model model) {
-
         model.addAttribute("p2p", new P2P());
         return "P2P/create";
     }

@@ -10,9 +10,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 @Controller
 public class CheckController extends BaseTableController {
+
+    private static final Logger logger = LoggerFactory.getLogger(CheckController.class);
     @Autowired
     public CheckController(CheckService checkService) {
         this.entityService = checkService;
@@ -30,8 +35,14 @@ public class CheckController extends BaseTableController {
 
     @PostMapping("Check/create")
     public String create(Check check, Model model) {
-        entityService.add(check);
-        return "redirect:/Check";
+        try {
+            entityService.add(check);
+            return "redirect:/Check";
+        } catch (Exception e){
+            logger.error("Check creating error", e);
+            model.addAttribute("error", "Check creating error");
+            return "Check/create";
+        }
     }
 
     @GetMapping("/Check/delete/{id}")

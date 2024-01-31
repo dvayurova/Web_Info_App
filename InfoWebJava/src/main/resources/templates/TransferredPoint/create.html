@@ -9,13 +9,13 @@
 <div th:replace="header.html"></div>
 <main>
 <form action="#" th:action="@{create}" th:object="${transferredPoint}" method="post">
-    <label for="checkingpeer">checking peer</label>
-    <input type="text" th:field="*{checkingpeer}" id="checkingpeer" placeholder="checking peer">
-    <label for="checkedpeer">checked peer</label>
-    <input type="text" th:field="*{checkedpeer}" id="checkedpeer" placeholder="checked peer">
+    <label for="checkingPeer">checking peer</label>
+    <input type="text" th:field="*{checkingPeer}" id="checkingPeer" placeholder="checking peer">
+    <label for="checkedPeer">checked peer</label>
+    <input type="text" th:field="*{checkedPeer}" id="checkedPeer" placeholder="checked peer">
     <label for="pointsAmount">points amount</label>
     <input type="text" th:field="*{pointsAmount}" id="pointsAmount" placeholder="points amount">
-    <input type="submit" value="Add transferredPoint">
+    <input type="submit" value="Add">
 </form>
 </main>
 <div th:replace="footer.html"></div>

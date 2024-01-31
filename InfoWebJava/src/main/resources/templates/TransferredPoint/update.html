@@ -11,10 +11,10 @@
     <form action="#" th:action="@{'update' + ${transferredPoint.id}}" th:object="${transferredPoint}" method="post">
     <label for="id">id</label>
         <input readonly type="text" th:field="*{id}" id="id" placeholder="id">
-        <label for="checkingpeer">checking peer</label>
-        <input type="text" th:field="*{checkingpeer}" id="checkingpeer" placeholder="checking peer">
-        <label for="checkedpeer">checked peer</label>
-        <input type="text" th:field="*{checkedpeer}" id="checkedpeer" placeholder="checked peer">
+        <label for="checkingPeer">checking peer</label>
+        <input type="text" th:field="*{checkingPeer}" id="checkingPeer" placeholder="checking peer">
+        <label for="checkedPeer">checked peer</label>
+        <input type="text" th:field="*{checkedPeer}" id="checkedPeer" placeholder="checked peer">
         <label for="pointsAmount">points amount</label>
         <input type="text" th:field="*{pointsAmount}" id="pointsAmount" placeholder="points amount">
         <input type="submit" value="Save">

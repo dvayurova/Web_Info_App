@@ -17,13 +17,14 @@ public class XpController extends BaseTableController{
         this.entityService = xpService;
     }
 
-    @GetMapping("/Xp")
+    @GetMapping("/XP")
     public String showXp(Model model){
         return show(model);
     }
 
     @GetMapping("/XP/create")
-    public String createForm(XP xp) {
+    public String createForm(Model model) {
+        model.addAttribute("xp", new XP());
         return "XP/create";
     }
 

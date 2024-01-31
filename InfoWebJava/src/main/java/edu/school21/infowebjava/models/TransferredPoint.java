@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="transferredPoints")
+@Table(name="transferredpoints")
 public class TransferredPoint implements EntityInterface {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

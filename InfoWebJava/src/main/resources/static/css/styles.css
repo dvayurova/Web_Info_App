@@ -41,3 +41,9 @@ header a {
     margin: 0 10px;
     font-size: 18px;
 }
+
+.error-message {
+    color: red;
+    margin-top: 10px;
+}
+
