@@ -9,8 +9,13 @@ import org.springframework.stereotype.Service;
 import java.util.Arrays;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @Service
 public class PeerService implements EntityService<Peer, String> {
+
+    private static final Logger logger = LoggerFactory.getLogger(PeerService.class);
 
     private final PeerRepository peerRepository;
 
@@ -20,36 +25,42 @@ public class PeerService implements EntityService<Peer, String> {
     }
 
     @Override
-    public List<? extends EntityInterface> getAll(){
+    public List<? extends EntityInterface> getAll() {
         return peerRepository.findAll();
     }
+
     @Override
-    public Peer findById(String nickname){
+    public Peer findById(String nickname) {
         return peerRepository.findById(nickname).get();
     }
 
     @Override
-    public Peer add(Peer peer){
-        return peerRepository.save(peer);
+    public Peer add(Peer peer) {
+        Peer savedPeer = peerRepository.save(peer);
+        logger.info("new Peer with nickname {} was added", savedPeer.getNickname());
+        return savedPeer;
     }
 
     @Override
-    public Peer update(Peer peer){
-        return peerRepository.save(peer) ;
+    public Peer update(Peer peer) {
+        Peer updatedPeer = peerRepository.save(peer);
+        logger.info("Peer with nickname {} was updated", updatedPeer.getNickname());
+        return updatedPeer;
     }
 
     @Override
-    public void delete(String nickname){
+    public void delete(String nickname) {
         peerRepository.deleteById(nickname);
+        logger.info("Peer with nickname{} was deleted", nickname);
     }
 
     @Override
-    public List<String> columnNames(){
+    public List<String> columnNames() {
         return Arrays.asList("nickname", "birthday");
     }
 
     @Override
-    public String tableName(){
+    public String tableName() {
         return "Peer";
     }
 }

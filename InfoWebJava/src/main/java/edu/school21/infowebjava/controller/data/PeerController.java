@@ -10,10 +10,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Controller
 public class PeerController extends BaseTableController {
+
+    private static final Logger logger = LoggerFactory.getLogger(PeerController.class);
 
     @Autowired
     public PeerController(PeerService peerService) {
@@ -32,8 +35,14 @@ public class PeerController extends BaseTableController {
 
     @PostMapping("Peer/create")
     public String create(Peer peer, Model model) {
-        entityService.add(peer);
-        return "redirect:/Peer";
+        try {
+            entityService.add(peer);
+            return "redirect:/Peer";
+        } catch(Exception e) {
+            logger.error("Peer creating error", e);
+            model.addAttribute("error", "Peer creating error");
+            return "Peer/create";
+        }
     }
 
     @GetMapping("/Peer/delete/{id}")

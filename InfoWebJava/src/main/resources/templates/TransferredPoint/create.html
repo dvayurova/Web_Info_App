@@ -17,6 +17,7 @@
     <input type="text" th:field="*{pointsAmount}" id="pointsAmount" placeholder="points amount">
     <input type="submit" value="Add">
 </form>
+    <div th:if="${error}" class="error-message" th:text="${error}"></div>
 </main>
 <div th:replace="footer.html"></div>
 </body>

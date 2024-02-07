@@ -10,8 +10,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @Controller
 public class RecommendationController extends BaseTableController{
+
+    private static final Logger logger = LoggerFactory.getLogger(RecommendationController.class);
 
     @Autowired
     public RecommendationController(RecommendationService recommendationService) {
@@ -30,8 +35,14 @@ public class RecommendationController extends BaseTableController{
 
     @PostMapping("Recommendation/create")
     public String create(Recommendation recommendation, Model model) {
-        entityService.add(recommendation);
-        return "redirect:/Recommendation";
+        try {
+            entityService.add(recommendation);
+            return "redirect:/Recommendation";
+        } catch (Exception e){
+            logger.error("Recommendation creating error", e);
+            model.addAttribute("error", "Recommendation creating error");
+            return "Recommendation/create";
+        }
     }
 
     @GetMapping("/Recommendation/delete/{id}")

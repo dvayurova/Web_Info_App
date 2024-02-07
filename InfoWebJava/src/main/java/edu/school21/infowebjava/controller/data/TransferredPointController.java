@@ -10,8 +10,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @Controller
 public class TransferredPointController extends BaseTableController {
+
+    private static final Logger logger = LoggerFactory.getLogger(TransferredPointController.class);
+
     @Autowired
     public TransferredPointController(TransferredPointService transferredPointService) {
         this.entityService = transferredPointService;
@@ -29,8 +35,14 @@ public class TransferredPointController extends BaseTableController {
 
     @PostMapping("TransferredPoint/create")
     public String create(TransferredPoint transferredPoint, Model model) {
-        entityService.add(transferredPoint);
-        return "redirect:/TransferredPoint";
+        try {
+            entityService.add(transferredPoint);
+            return "redirect:/TransferredPoint";
+        } catch(Exception e){
+            logger.error("TransferredPoint creating error", e);
+            model.addAttribute("error", "TransferredPoint creating error");
+            return "TransferredPoint/create";
+        }
     }
 
     @GetMapping("/TransferredPoint/delete/{id}")
@@ -44,8 +56,9 @@ public class TransferredPointController extends BaseTableController {
         model.addAttribute("transferredPoint", entityService.findById(id));
         return "TransferredPoint/update";
     }
+
     @PostMapping("/TransferredPoint/update/{id}")
-    public String update(@ModelAttribute("transferredPoint") TransferredPoint transferredPoint){
+    public String update(@ModelAttribute("transferredPoint") TransferredPoint transferredPoint) {
         entityService.update(transferredPoint);
         return "redirect:/TransferredPoint";
     }

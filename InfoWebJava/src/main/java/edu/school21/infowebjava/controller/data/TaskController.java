@@ -10,8 +10,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @Controller
 public class TaskController extends BaseTableController{
+
+    private static final Logger logger = LoggerFactory.getLogger(TaskController.class);
     @Autowired
     public TaskController(TaskService taskService) {
         this.entityService = taskService;
@@ -29,8 +34,14 @@ public class TaskController extends BaseTableController{
 
     @PostMapping("Task/create")
     public String create(Task task, Model model) {
-        entityService.add(task);
-        return "redirect:/Task";
+        try {
+            entityService.add(task);
+            return "redirect:/Task";
+        } catch(Exception e) {
+            logger.error("Task creating error", e);
+            model.addAttribute("error", "Task creating error");
+            return "Task/create";
+        }
     }
 
     @GetMapping("/Task/delete/{id}")

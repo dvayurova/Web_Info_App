@@ -1,7 +1,6 @@
 package edu.school21.infowebjava.service;
 
 import edu.school21.infowebjava.models.EntityInterface;
-import edu.school21.infowebjava.models.Peer;
 import edu.school21.infowebjava.models.Task;
 import edu.school21.infowebjava.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +9,13 @@ import org.springframework.stereotype.Service;
 import java.util.Arrays;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @Service
 public class TaskService implements EntityService<Task, String>{
+
+    private static final Logger logger = LoggerFactory.getLogger(TaskService.class);
     private final TaskRepository taskRepository;
 
     @Autowired
@@ -31,17 +35,22 @@ public class TaskService implements EntityService<Task, String>{
 
     @Override
     public Task add(Task task){
-        return taskRepository.save(task);
+        Task savedTask = taskRepository.save(task);
+        logger.info("new Task with title {} was added", savedTask.getTitle());
+        return savedTask;
     }
 
     @Override
     public Task update(Task task){
-        return taskRepository.save(task);
+        Task updatedTask = taskRepository.save(task);
+        logger.info("Task with title {} was updated", updatedTask.getTitle());
+        return updatedTask;
     }
 
     @Override
     public void delete(String task){
         taskRepository.deleteById(task);
+        logger.info("Task with title {} was deleted", task);
     }
     @Override
     public List<String> columnNames(){

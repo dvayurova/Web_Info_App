@@ -10,9 +10,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Controller
 public class TimeTrackerController extends BaseTableController{
+
+    private static final Logger logger = LoggerFactory.getLogger(TimeTrackerController.class);
     @Autowired
     public TimeTrackerController(TimeTrackerService timeTrackerService) {
         this.entityService = timeTrackerService;
@@ -29,8 +33,14 @@ public class TimeTrackerController extends BaseTableController{
 
     @PostMapping("TimeTracker/create")
     public String create(TimeTracker timeTracker, Model model) {
-        entityService.add(timeTracker);
-        return "redirect:/TimeTracker";
+        try {
+            entityService.add(timeTracker);
+            return "redirect:/TimeTracker";
+        } catch(Exception e){
+            logger.error("TimeTracker creating error", e);
+            model.addAttribute("error", "TimeTracker creating error");
+            return "TimeTracker/create";
+        }
     }
 
     @GetMapping("/TimeTracker/delete/{id}")

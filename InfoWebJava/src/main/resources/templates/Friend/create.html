@@ -15,6 +15,7 @@
     <input type="text" th:field="*{peer2}" id="peer2" placeholder="peer2">
     <input type="submit" value="Add friend">
 </form>
+    <div th:if="${error}" class="error-message" th:text="${error}"></div>
 </main>
 <div th:replace="footer.html"></div>
 </body>

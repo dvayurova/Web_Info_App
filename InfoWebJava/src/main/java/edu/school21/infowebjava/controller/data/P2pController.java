@@ -10,15 +10,21 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @Controller
-public class P2pController extends BaseTableController{
+public class P2pController extends BaseTableController {
+
+    private static final Logger logger = LoggerFactory.getLogger(P2pController.class);
+
     @Autowired
     public P2pController(P2pService p2pService) {
         this.entityService = p2pService;
     }
 
     @GetMapping("/P2P")
-    public String showP2p(Model model){
+    public String showP2p(Model model) {
         return show(model);
     }
 
@@ -30,8 +36,14 @@ public class P2pController extends BaseTableController{
 
     @PostMapping("P2P/create")
     public String create(P2P p2p, Model model) {
-        entityService.add(p2p);
-        return "redirect:/P2P";
+        try {
+            entityService.add(p2p);
+            return "redirect:/P2P";
+        } catch (Exception e) {
+            logger.error("P2P creating error", e);
+            model.addAttribute("error", "P2P creating error");
+            return "P2P/create";
+        }
     }
 
     @GetMapping("/P2P/delete/{id}")
@@ -45,8 +57,9 @@ public class P2pController extends BaseTableController{
         model.addAttribute("p2p", entityService.findById(id));
         return "P2P/update";
     }
+
     @PostMapping("/P2P/update/{id}")
-    public String update(@ModelAttribute("p2p") P2P p2p){
+    public String update(@ModelAttribute("p2p") P2P p2p) {
         entityService.update(p2p);
         return "redirect:/P2P";
     }

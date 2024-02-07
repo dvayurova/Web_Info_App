@@ -10,8 +10,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 @Controller
 public class XpController extends BaseTableController{
+
+    private static final Logger logger = LoggerFactory.getLogger(XpController.class);
     @Autowired
     public XpController(XpService xpService) {
         this.entityService = xpService;
@@ -30,8 +34,14 @@ public class XpController extends BaseTableController{
 
     @PostMapping("XP/create")
     public String create(XP xp, Model model) {
-        entityService.add(xp);
-        return "redirect:/XP";
+        try {
+            entityService.add(xp);
+            return "redirect:/XP";
+        } catch (Exception e){
+            logger.error("XP creating error", e);
+            model.addAttribute("error", "XP creating error");
+            return "XP/create";
+        }
     }
 
     @GetMapping("/XP/delete/{id}")

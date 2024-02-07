@@ -10,17 +10,24 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @Controller
-public class FriendController extends BaseTableController{
+public class FriendController extends BaseTableController {
+
+    private static final Logger logger = LoggerFactory.getLogger(FriendController.class);
+
     @Autowired
     public FriendController(FriendService friendService) {
         this.entityService = friendService;
     }
 
     @GetMapping("/Friend")
-    public String showFriends(Model model){
+    public String showFriends(Model model) {
         return show(model);
     }
+
     @GetMapping("/Friend/create")
     public String createForm(Friend friend) {
         return "Friend/create";
@@ -28,8 +35,14 @@ public class FriendController extends BaseTableController{
 
     @PostMapping("Friend/create")
     public String create(Friend friend, Model model) {
-        entityService.add(friend);
-        return "redirect:/Friend";
+        try {
+            entityService.add(friend);
+            return "redirect:/Friend";
+        } catch (Exception e) {
+            logger.error("Friend creating error", e);
+            model.addAttribute("error", "Friend creating error");
+            return "Friend/create";
+        }
     }
 
     @GetMapping("/Friend/delete/{id}")
@@ -43,8 +56,9 @@ public class FriendController extends BaseTableController{
         model.addAttribute("friend", entityService.findById(id));
         return "Friend/update";
     }
+
     @PostMapping("/Friend/update/{id}")
-    public String update(@ModelAttribute("friend") Friend friend){
+    public String update(@ModelAttribute("friend") Friend friend) {
         entityService.update(friend);
         return "redirect:/Friend";
     }
