@@ -1,9 +1,10 @@
 <configuration>
+
     <property name="LOG_DIR" value="logs" />
-    <property name="LOG_FILE" value="%d{logs_dd-MM-yy-HH-mm-ss}.log" />
+    <timestamp key="myTimestamp" datePattern="dd-MM-yy-hh-mm-ss"/>
 
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
-        <file>${LOG_DIR}/${LOG_FILE}</file>
+        <file>${LOG_DIR}/logs_${myTimestamp}.log</file>
         <encoder>
             <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
@@ -12,4 +13,5 @@
     <root level="info">
         <appender-ref ref="FILE" />
     </root>
+
 </configuration>

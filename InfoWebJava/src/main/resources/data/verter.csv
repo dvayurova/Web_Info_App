@@ -1,0 +1,31 @@
+check_id, State, Time
+1,Start, 15:42
+1,Success, 15:43
+2,Start, 09:35
+2,Success, 09:36
+3,Start, 09:08
+3,Success, 09:09
+5,Start, 12:25
+5,Success, 12:35
+6,Start, 10:21
+6,Success, 11:05
+7,Start,07:00
+7,Failure,07:01
+8,Start,07:25
+8,Success,07:26
+9,Start,11:05
+9,Success,11:06
+10,Start,11:56
+10,Success,11:57
+11,Start,16:23
+11,Success,17:00
+12,Start,18:42
+12,Success,18:43
+13,Start,16:03
+13,Success,16:04
+14,Start,17:13
+14,Success,17:14
+15,Start, 16:50
+15,Success, 16:51
+16,Start, 11:01
+16,Failure, 11:02

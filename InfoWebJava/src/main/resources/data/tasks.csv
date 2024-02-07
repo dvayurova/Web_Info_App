@@ -1,0 +1,8 @@
+title, parentTask, maxXp
+C8_3DViewer_v1.0,C7_SmartCalc_v1.0, 750
+CPP1_s21_matrixplus,C8_3DViewer_v1.0, 300
+CPP2_s21_containers,CPP1_s21_matrixplus, 350
+CPP3_SmartCalc_v2.0,CPP2_s21_containers, 600
+CPP4_3DViewer_v2.0,CPP3_SmartCalc_v2.0, 750
+A1_s21_maze,CPP4_3DViewer_v2.0, 300
+A2_s21_simplenavigator_v_1.0,A1_s21_maze, 400
