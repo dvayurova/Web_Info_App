@@ -47,3 +47,56 @@ header a {
     margin-top: 10px;
 }
 
+.table-container {
+    background-color: #F4F4F9;
+    padding: 10px;
+    border-radius: 15px;
+    margin: 0 auto; /* Добавление отступов по бокам */
+    max-width: 700px; /* Максимальная ширина таблицы */
+}
+
+.table-card {
+    background-color: #EBECF4;
+    border: 1px solid #AEBBCA;
+    border-radius: 15px;
+    padding: 10px;
+    margin: 20px auto; /* Добавление отступов сверху и снизу */
+    max-width: 700px; /* Максимальная ширина таблицы */
+}
+
+.table-card a {
+    color: #212121;
+    text-decoration: none;
+}
+
+.table-card a:hover {
+    color: #861BE3;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th,
+table td {
+    border: 1px solid #AEBBCA;
+    padding: 8px;
+    text-align: left;
+}
+
+
+.table-row a {
+    color: #212121;
+    text-decoration: none;
+    background-color: #44EB99;
+    padding: 8px 16px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.table-row a:hover {
+    background-color: #86B1E3;
+}
+

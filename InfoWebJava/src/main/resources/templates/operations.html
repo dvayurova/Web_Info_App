@@ -1,124 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        header {
-            height: 200px;
-            background-color: #1D2633;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0px;
-            color: #FFFFFF;
-            position: relative;
-        }
-
-        img.logo {
-            position: absolute;
-            top: -30px;
-            left: -50px;
-            margin: 0;
-        }
-
-        img.footer-logo {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            margin: 0;
-        }
-        header a {
-            text-decoration: none;
-            margin: 0 10px;
-            font-size: 18px;
-        }
-
-        body {
-            margin: 0;
-            padding: 0px;
-            font-family: 'SB Sans Display', sans-serif;
-            background-color: #EBECF4;
-            color: #212121;
-        }
-
-        main {
-            background-color: #EBECF4;
-            padding: 20px;
-            margin-top: 100px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .rectangle {
-            background-color: #ffffff;
-            border-radius: 15px;
-            padding: 20px;
-            margin: 10px;
-            display: inline-block;
-            text-align: center;
-        }
-
-        .icon {
-            width: 50px;
-            height: 50px;
-            margin-bottom: 10px;
-        }
-
-        .link {
-            text-decoration: none;
-            color: #333333;
-            display: block;
-        }
-
-        @media (min-width: 768px) {
-            .rectangle {
-                width: 19%;
-            }
-        }
-
-        @media (max-width: 767px) {
-            .rectangle {
-                width: 100%;
-            }
-        }
-    </style>
-    <title>Rectangles Page</title>
+    <title>Data</title>
+    <link rel="stylesheet" type="text/css" media="all" href="../static/css/styles.css" th:href="@{/css/styles.css}">
 </head>
 <body>
 <div th:replace="header.html"></div>
 <main>
-<div class="container">
-    <div class="rectangle">
-        <img src="icon1.png" alt="Icon 1" class="icon">
-        <a href="#" class="link">Link 1</a>
+    <form action="#" th:action="@{/execute-query}" method="post">
+        <label for="sqlQuery">Введите SQL запрос:</label><br>
+        <textarea id="sqlQuery" name="sqlQuery" rows="4" cols="50"></textarea><br>
+        <input type="submit" value="Выполнить запрос">
+    </form>
+    <div th:if="${error}" class="error">
+        <p th:text="${error}"></p>
     </div>
-
-    <div class="rectangle">
-        <img src="icon2.png" alt="Icon 2" class="icon">
-        <a href="#" class="link">Link 2</a>
+    <div th:if="${queryResult}">
+        <h2>Результаты запроса:</h2>
+        <table>
+            <thead>
+            <tr>
+                <!-- Вывод заголовков столбцов -->
+                <th th:each="columnName : ${columnNames}" th:text="${columnName}"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="row : ${queryResult}">
+                <!-- Вывод данных из результата запроса -->
+                <td th:each="value : ${row}" th:text="${value}"></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
-
-    <div class="rectangle">
-        <img src="icon3.png" alt="Icon 3" class="icon">
-        <a href="#" class="link">Link 3</a>
-    </div>
-
-    <div class="rectangle">
-        <img src="icon4.png" alt="Icon 4" class="icon">
-        <a href="#" class="link">Link 4</a>
-    </div>
-
-    <div class="rectangle">
-        <img src="icon5.png" alt="Icon 5" class="icon">
-        <a href="#" class="link">Link 5</a>
-    </div>
-</div>
 </main>
-<div th:replace="footer.html"></div>
 </body>
 </html>
